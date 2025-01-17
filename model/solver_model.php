@@ -88,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-echo ($possibleNumbers[8.8][0]);
-echo (array_values($possibleNumbers[$i.$j]));
+echo ($possibleNumbers[8][8]);
+echo (array_values($possibleNumbers[$i][$j]));
 echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j < 9; $j++) {
