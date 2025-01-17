@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
                     if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);                    //falsch
+                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);                    //falsch
                    //     $possibleNumbers[$i ][ $j] = array_diff($possibleNumbers[$i ][ $j], $checkArray[$k]);
                     }
                 }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
                     if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);
+                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);
                     }
                 }
             }
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 for ($j = $y; $j < $y + 3; $j++) {
                     for ($k = 0; $k < count($checkArray); $k++) {
                         if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                            array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);
+                            array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);
                         }
                     }
                 }
