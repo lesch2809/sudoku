@@ -18,11 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
                     if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);                    //falsch
+                        array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);                    //falsch
                    //     $possibleNumbers[$i ][ $j] = array_diff($possibleNumbers[$i ][ $j], $checkArray[$k]);
                     }
                 }
-                echo ($possibleNumbers[0][0]);
             }
         }
         $checkArray = [];
@@ -48,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
                     if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);
+                        array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);
                     }
                 }
             }
@@ -79,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 for ($j = $y; $j < $y + 3; $j++) {
                     for ($k = 0; $k < count($checkArray); $k++) {
                         if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                            array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);
+                            array_splice($possibleNumbers[$i ][ $j], ($checkArray[$k]-1), 1);
                         }
                     }
                 }
@@ -88,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-echo ($possibleNumbers[8][8]);
-echo (array_values($possibleNumbers[$i][$j]));
+echo (var_dump($possibleNumbers[8][8]));
+
 echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j < 9; $j++) {
