@@ -17,11 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($j = 0; $j < 9; $j++) {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
-                    if (in_array($checkArray[$k], $possibleNumbers[$i . $j])) {
-                        array_splice($possibleNumbers[$i . $j], $checkArray[$k]);
+                    if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
+                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);                    //falsch
+                   //     $possibleNumbers[$i ][ $j] = array_diff($possibleNumbers[$i ][ $j], $checkArray[$k]);
                     }
                 }
-                echo ($possibleNumbers[0 . 4][0]);
+                echo ($possibleNumbers[0][0]);
             }
         }
         $checkArray = [];
@@ -46,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($i = 0; $i < 9; $i++) {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
-                    if (in_array($checkArray[$k], $possibleNumbers[$i . $j])) {
-                        array_splice($possibleNumbers[$i . $j], $checkArray[$k]);
+                    if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
+                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);
                     }
                 }
             }
@@ -77,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             for ($i = $x; $i < $x + 3; $i++) {
                 for ($j = $y; $j < $y + 3; $j++) {
                     for ($k = 0; $k < count($checkArray); $k++) {
-                        if (in_array($checkArray[$k], $possibleNumbers[$i . $j])) {
-                            array_splice($possibleNumbers[$i . $j], $checkArray[$k]);
+                        if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
+                            array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]);
                         }
                     }
                 }
@@ -87,5 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
+echo ($possibleNumbers[8.8][0]);
+echo (array_values($possibleNumbers[$i.$j]));
 echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
+for ($i = 0; $i < 9; $i++) {
+    for ($j = 0; $j < 9; $j++) {
+        echo "Possible numbers for cell ($i, $j): " . implode(", ", $possibleNumbers[$i ][ $j]) . "<br>";
+    }
+}

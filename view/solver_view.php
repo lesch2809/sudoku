@@ -9,7 +9,7 @@ $falsch2 = 0;
 $numbers = [];
 $checkNumbers = [];
 $checkArray = [];
-$possibleNumbers = [];
+$possibleNumbers[][] = [];
 $row = 0;
 $column = 0;
 $field = array_fill(0, 9, array_fill(0, 9, 0));
@@ -30,7 +30,7 @@ require "view/templates/header.php";
                     <label for="number">Numbers<?= $i . $j ?></label>
                     <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="0">
                     <?php 
-                    $possibleNumbers[$i.$j] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                    $possibleNumbers[$i ][ $j] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                 }
                 echo "|";
             }
