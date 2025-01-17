@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             for ($i = $x; $i < $x + 3; $i++) {
                 for ($j = $y; $j < $y + 3; $j++) {
                     for ($k = 0; $k < count($checkArray); $k++) {
-                        if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
+                        if (in_array($checkArray[$k], $possibleNumbers[$i][$j])) {
                             array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);
                         }
                     }
