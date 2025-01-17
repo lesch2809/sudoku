@@ -22,7 +22,7 @@ if ($page == 'solver' && isset($_SESSION["log_in_user"])) {
     if (array_key_exists($page, $routes)) {
         require $routes[$page];
     } else {
-        require 'views/404_view.php';
+        require 'view/404_view.php';
         http_response_code(404);
     }
 }
