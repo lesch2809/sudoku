@@ -9,6 +9,7 @@ $routes = [
     'generate'      => 'view/generate_view.php',
     'register'      => 'view/register_view.php',
     'logout'        => 'view/logout_view.php',
+    ''              => 'view/home_view.php',
 ];
 //require $routes[$page];
 

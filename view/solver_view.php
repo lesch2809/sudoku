@@ -28,7 +28,7 @@ require "view/templates/header.php";
             for ($y = 0; $y < 9; $y += 3) {
                 for ($j = $y; $j < $y + 3; $j++) { ?>
                     <label for="number">Numbers<?= $i . $j ?></label>
-                    <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="0">
+                    <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
                     <?php 
                     $possibleNumbers[$i ][ $j] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                 }

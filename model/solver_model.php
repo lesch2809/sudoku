@@ -17,9 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($j = 0; $j < 9; $j++) {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
-                    if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);                    //falsch
-                   //     $possibleNumbers[$i ][ $j] = array_diff($possibleNumbers[$i ][ $j], $checkArray[$k]);
+                    if (in_array($checkArray[$k], $possibleNumbers[$i][$j])) {
+                        $possibleNumbers[$i][$j] = array_diff($possibleNumbers[$i][$j], $checkArray);
                     }
                 }
             }
@@ -46,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         for ($i = 0; $i < 9; $i++) {
             if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
                 for ($k = 0; $k < count($checkArray); $k++) {
-                    if (in_array($checkArray[$k], $possibleNumbers[$i ][ $j])) {
-                        array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);
+                    if (in_array($checkArray[$k], $possibleNumbers[$i][$j])) {
+                        $possibleNumbers[$i][$j] = array_diff($possibleNumbers[$i][$j], $checkArray);
                     }
                 }
             }
@@ -76,10 +75,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // löschen der nicht möglichen Zahlen anhand der Zahlen im Array
             for ($i = $x; $i < $x + 3; $i++) {
                 for ($j = $y; $j < $y + 3; $j++) {
-                    for ($k = 0; $k < count($checkArray); $k++) {
-                        if (in_array($checkArray[$k], $possibleNumbers[$i][$j])) {
-                            array_splice($possibleNumbers[$i ][ $j], $checkArray[$k]-1, 1);
+                    if ($field[$i][$j] == 0 || $field[$i][$j] == null) {
+                        for ($k = 0; $k < count($checkArray); $k++) {
+                            if (in_array($checkArray[$k], $possibleNumbers[$i][$j])) {
+                                $possibleNumbers[$i][$j] = array_diff($possibleNumbers[$i][$j], $checkArray);
+                            }
                         }
+                    }else{
+                        $possibleNumbers[$i][$j] = [];
                     }
                 }
             }
@@ -92,6 +95,13 @@ echo (var_dump($possibleNumbers[8][8]));
 echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j < 9; $j++) {
-        echo "Possible numbers for cell ($i, $j): " . implode(", ", $possibleNumbers[$i ][ $j]) . "<br>";
+        echo "Possible numbers for cell ($i, $j): " . implode(", ", $possibleNumbers[$i][$j]) . "<br>";
+    }
+}
+for ($i = 0; $i < 9; $i++) {
+    for ($j = 0; $j < 9; $j++) {
+        if ( count($possibleNumbers[$i][$j]) == 1) {
+            echo "Cell ($i, $j) has only one possible number: " . $possibleNumbers[$i][$j][0] . "<br>";
+        }
     }
 }
