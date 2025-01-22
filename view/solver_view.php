@@ -29,35 +29,38 @@ require "view/templates/header.php";
 <h1>
     Solver
 </h1>
+<div class="form_solver">
+    <form action="" method="POST">
+        <?php
+        for ($x = 0; $x < 9; $x += 3) {
+            for ($i = $x; $i < $x + 3; $i++) {
+                for ($y = 0; $y < 9; $y += 3) {
+                    for ($j = $y; $j < $y + 3; $j++) { ?>
+                        <label for="number">Numbers<?= $i . $j ?></label>
+                        <input type="number" class="input_number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
+        <?php
 
-<form action="" method="POST">
-    <?php
-    for ($x = 0; $x < 9; $x += 3) {
-        for ($i = $x; $i < $x + 3; $i++) {
-            for ($y = 0; $y < 9; $y += 3) {
-                for ($j = $y; $j < $y + 3; $j++) { ?>
-                    <label for="number">Numbers<?= $i . $j ?></label>
-                    <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
-    <?php
-
+                    }
+                    echo "|";
                 }
-                echo "|";
+                echo "<br>";
             }
             echo "<br>";
         }
-        echo "<br>";
-    }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        for ($row = 0; $row < 9; $row++) {
-            for ($column = 0; $column < 9; $column++) {
-                $field[$row][$column] = $_POST[$row . $column];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            for ($row = 0; $row < 9; $row++) {
+                for ($column = 0; $column < 9; $column++) {
+                    $field[$row][$column] = $_POST[$row . $column];
+                }
             }
         }
-    }
-    ?>
-    <button type="submit">submit</button>
-</form>
+        ?>
+        <div class="form_solver">
+        <button type="submit" class="button">submit</button>
+        </div>
+    </form>
+</div>
 <?php
 
 require 'model/solver_model.php';
@@ -79,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 for ($y = 0; $y < 9; $y += 3) {
                     for ($j = $y; $j < $y + 3; $j++) { ?>
                         <label for="number">Numbers<?= $i . $j ?></label>
-                        <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $_POST[$i . $j] ?>">
+                        <input type="number" class="input_number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $_POST[$i . $j] ?>">
         <?php
 
                     }
@@ -90,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<br>";
         }
         ?>
-        <button type="submit">submit</button>
+        <button type="submit" class="button">submit</button>
     </form>
 <?php
 }
