@@ -13,6 +13,15 @@ $possibleNumbers[][] = array();
 $row = 0;
 $column = 0;
 $field = array_fill(0, 9, array_fill(0, 9, 0));
+$clear = 0;
+for ($i = 0; $i < 9; $i++) {
+    for ($j = 0; $j < 9; $j++) {
+
+        $possibleNumbers[$i][$j] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    }
+}
+
+
 require "view/templates/header.php";
 
 
@@ -29,8 +38,8 @@ require "view/templates/header.php";
                 for ($j = $y; $j < $y + 3; $j++) { ?>
                     <label for="number">Numbers<?= $i . $j ?></label>
                     <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
-                    <?php 
-                    $possibleNumbers[$i ][ $j] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    <?php
+
                 }
                 echo "|";
             }
@@ -51,13 +60,37 @@ require "view/templates/header.php";
 </form>
 <?php
 
+require 'model/solver_model.php';
 
-for ($row = 0; $row < 9; $row++) {
-    for ($column = 0; $column < 9; $column++) {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    for ($row = 0; $row < 9; $row++) {
+        for ($column = 0; $column < 9; $column++) {
+
             echo ($field[$row][$column]);
         }
     }
     echo "<br>";
+
+?>
+    <form action="" method="POST">
+        <?php
+        for ($x = 0; $x < 9; $x += 3) {
+            for ($i = $x; $i < $x + 3; $i++) {
+                for ($y = 0; $y < 9; $y += 3) {
+                    for ($j = $y; $j < $y + 3; $j++) { ?>
+                        <label for="number">Numbers<?= $i . $j ?></label>
+                        <input type="number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $_POST[$i . $j] ?>">
+        <?php
+
+                    }
+                    echo "|";
+                }
+                echo "<br>";
+            }
+            echo "<br>";
+        }
+        ?>
+        <button type="submit">submit</button>
+    </form>
+<?php
 }
-require 'model/solver_model.php';
