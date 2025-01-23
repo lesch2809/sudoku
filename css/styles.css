@@ -80,3 +80,34 @@ h1 {
 p {
     margin: 10px 0;
 }
+
+
+
+
+td input[readonly] {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(3n) td {
+    border-bottom: 3px solid black;
+}
+
+td:nth-child(3n) {
+    border-right: 3px solid black;
+}
+
+td:nth-child(1) {
+    border-left: 3px solid black;
+}
+
+td:nth-child(9) {
+    border-right: 3px solid black;
+}
+
+tr:nth-child(1) td {
+    border-top: 3px solid black;
+}
+
+tr:nth-child(9) td {
+    border-bottom: 3px solid black;
+}
