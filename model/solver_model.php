@@ -2,7 +2,7 @@
 $checkArray = [];
 //echo (var_dump($checkArray));
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    while ($clear < 81) {
+    while ($clear < 81 || $stop  == 70) {
         $clear = 0;
         //check if there is a nummbre double in a row
 
@@ -94,6 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
+        
+
+        //check if a nummber is only possible in one cell in a row
+
+
         echo (var_dump($possibleNumbers[8][8]));
 
         echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
@@ -116,5 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($clear == 81) {
             echo "Sudoku solved!";
         }
+        $stop += 1;
     }
 }

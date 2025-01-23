@@ -14,6 +14,7 @@ $row = 0;
 $column = 0;
 $field = array_fill(0, 9, array_fill(0, 9, 0));
 $clear = 0;
+$stop = 0;
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j < 9; $j++) {
 
