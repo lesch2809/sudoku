@@ -97,7 +97,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
 
         //check if a nummber is only possible in one cell in a row
-
+        for ($i = 0; $i < 9; $i++) {
+            for ($j = 0; $j < 9; $j++) {
+                for ($k=0; $k < count($possibleNumbers[$i][$j]); $k++) {
+                    if (in_array($possibleNumbers[$i][$j][$k], $possibleNumbersRow)) {
+                        $impossibleNumbersRow[$i] = $possibleNumbers[$i][$j][$k];
+                    }else{
+                        $possibleNumbersRow[$i] = $possibleNumbers[$i][$j][$k];
+                    }
+                    
+                }
+            }
+        }
 
         echo (var_dump($possibleNumbers[8][8]));
 
@@ -114,7 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "Cell ($i, $j) has only one possible number: " . implode(", ", $possibleNumbers[$i][$j]) . "<br>";
                     $_POST[$i.$j] = $possibleNumbers[$i][$j][0];
                     $field[$i][$j] = $possibleNumbers[$i][$j][0];
-                   
                 }
             }
         }

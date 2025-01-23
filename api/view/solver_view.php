@@ -15,6 +15,8 @@ $column = 0;
 $field = array_fill(0, 9, array_fill(0, 9, 0));
 $clear = 0;
 $stop = 0;
+$possibleNumbersRow = [];
+$impossibleNumbersRow = [];
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j < 9; $j++) {
 
@@ -38,7 +40,7 @@ require "view/templates/header.php";
                 for ($y = 0; $y < 9; $y += 3) {
                     for ($j = $y; $j < $y + 3; $j++) { ?>
                         <label for="number">Numbers<?= $i . $j ?></label>
-                        <input type="number" class="input_number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
+                        <input type="text" class="input_number" id="<?= $i . $j ?>" name="<?= $i . $j ?>" value="<?= $field[$i][$j] ?>">
         <?php
 
                     }
