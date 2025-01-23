@@ -19,6 +19,12 @@ nav {
 }
 .input_number{
     width: 30px;
+    height: 30px;
+    border-radius: 0;
+    margin: 0;
+    gap: 0;
+    border: 1px solid black;
+    text-align: center;
 }
 label{
    display: none;
@@ -26,8 +32,7 @@ label{
 table{
     margin: 0 auto;
     border-collapse: collapse;
-    width: 400px;
-    height: 400px;
+
 }
 .form_solver{
     display: flex;
@@ -80,13 +85,19 @@ h1 {
 p {
     margin: 10px 0;
 }
-
-
-
-
-td input[readonly] {
-    background-color: #f4f4f4;
+td{
+    width: 50px;
+    height: 50px;
 }
+
+tr{
+    width: 50px;
+    height: 50px;
+}
+
+
+
+
 
 tr:nth-child(3n) td {
     border-bottom: 3px solid black;
