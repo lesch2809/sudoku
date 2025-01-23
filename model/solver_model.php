@@ -2,7 +2,7 @@
 $checkArray = [];
 //echo (var_dump($checkArray));
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    while ($clear < 81 || $stop  == 70) {
+    while ($clear < 81 && $stop  < 30) {
         $clear = 0;
         //check if there is a nummbre double in a row
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
 
-        echo ("<br>");
+        //echo ("<br>");
         $checkArray = [];
 
         // check if there is a number double in a column
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
 
-        echo ("<br>");
+        //echo ("<br>");
         $checkArray = [];
 
         // check if there is a number double in a rect
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
 
         //check if a nummber is only possible in one cell in a row
-        for ($i = 0; $i < 9; $i++) {
+       /* for ($i = 0; $i < 9; $i++) {
             for ($j = 0; $j < 9; $j++) {
                 for ($k=0; $k < count($possibleNumbers[$i][$j]); $k++) {
                     if (in_array($possibleNumbers[$i][$j][$k], $possibleNumbersRow)) {
@@ -109,10 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
         }
+*/
+        //echo (var_dump($possibleNumbers[8][8]));
 
-        echo (var_dump($possibleNumbers[8][8]));
-
-        echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
+        //echo ($falsch . "/ " . $falsch1 . "/ " . $falsch2);
         //for ($i = 0; $i < 9; $i++) {
         //    for ($j = 0; $j < 9; $j++) {
         //        echo "Possible numbers for cell ($i, $j): " . implode(", ", $possibleNumbers[$i][$j]) . "<br>";
@@ -122,14 +122,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             for ($j = 0; $j < 9; $j++) {
                 if (count($possibleNumbers[$i][$j]) == 1) {
                     array_splice($possibleNumbers[$i][$j], 0, 0);
-                    echo "Cell ($i, $j) has only one possible number: " . implode(", ", $possibleNumbers[$i][$j]) . "<br>";
+                    //echo "Cell ($i, $j) has only one possible number: " . implode(", ", $possibleNumbers[$i][$j]) . "<br>";
                     $_POST[$i.$j] = $possibleNumbers[$i][$j][0];
                     $field[$i][$j] = $possibleNumbers[$i][$j][0];
                 }
             }
         }
         if ($clear == 81) {
-            echo "Sudoku solved!";
+            echo "<h1>Sudoku solved!</h1>";
         }
         $stop += 1;
     }
